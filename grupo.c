@@ -38,5 +38,22 @@ int main()
         promedioEstudiante[i] = sumaEstudiante / asignaturas;
     }
     printf("\n>> Cálculos de promedios finalizados.\n");
+   // 4. Reporte Final de Calificaciones
+    printf("\n============================================\n");
+    printf("        REPORTE FINAL DE RENDIMIENTO        \n");
+    printf("============================================\n");
+    printf("Estudiante\tPromedio\tEstado\n");
+    printf("--------------------------------------------\n");
+    
+    for (int i = 0; i < estudiantes; i++) {
+        printf("   #%d\t\t %.2f\t\t%s\n", 
+               i + 1, 
+               promedioEstudiante[i], 
+               (promedioEstudiante[i] >= 7.0) ? "APROBADO" : "REPROBADO");
+        
+        // Conteo de estados
+        if (promedioEstudiante[i] >= 7.0) aprobados[0]++; // Usamos el primer índice para general
+        else reprobados[0]++;
+    }
     
 }
