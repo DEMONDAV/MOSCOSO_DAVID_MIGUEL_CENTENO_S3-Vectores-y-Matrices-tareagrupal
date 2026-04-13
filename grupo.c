@@ -55,5 +55,12 @@ int main()
         if (promedioEstudiante[i] >= 7.0) aprobados[0]++; // Usamos el primer índice para general
         else reprobados[0]++;
     }
-    
+
+// 5. Estadísticas Generales
+    printf("--------------------------------------------\n");
+    printf("Total Aprobados: %d\n", aprobados[0]);
+    printf("Total Reprobados: %d\n", reprobados[0]);
+    printf("============================================\n");
+
+    return 0;
 }
