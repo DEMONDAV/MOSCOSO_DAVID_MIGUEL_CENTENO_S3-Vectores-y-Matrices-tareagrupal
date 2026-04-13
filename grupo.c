@@ -14,4 +14,18 @@ int main()
     float promedioAsignatura[3];
     int aprobados[3] = {0, 0, 0};
     int reprobados[3] = {0, 0, 0};
+
+    // 2. Ingreso de datos con validación obligatoria
+    for (int i = 0; i < estudiantes; i++) {
+        printf("\n--- Registro Estudiante %d ---\n", i + 1);
+        for (int j = 0; j < asignaturas; j++) {
+            do {
+                printf("  Nota Asignatura %d: ", j + 1);
+                scanf("%f", &notas[i][j]);
+                if (notas[i][j] < 0 || notas[i][j] > 10) {
+                    printf("  [Error] La nota debe estar entre 0 y 10.\n");
+                }
+            } while (notas[i][j] < 0 || notas[i][j] > 10);
+        }
+    }
 }
