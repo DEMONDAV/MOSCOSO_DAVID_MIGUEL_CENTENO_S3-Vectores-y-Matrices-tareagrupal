@@ -3,10 +3,9 @@
 int main() 
 {
     // 1. Definición de constantes y variables
-    // Según el requerimiento: 5 estudiantes y 3 asignaturas [cite: 18]
     int estudiantes = 5;
     int asignaturas = 3;
-    float notas[5][3]; // Matriz para almacenar las notas [cite: 13]
+    float notas[5][3];
     
     // Variables para cálculos
     float sumaEstudiante, sumaAsignatura;
