@@ -28,4 +28,15 @@ int main()
             } while (notas[i][j] < 0 || notas[i][j] > 10);
         }
     }
+
+    // 3. Procesamiento de promedios por estudiante
+    for (int i = 0; i < estudiantes; i++) {
+        sumaEstudiante = 0;
+        for (int j = 0; j < asignaturas; j++) {
+            sumaEstudiante += notas[i][j];
+        }
+        promedioEstudiante[i] = sumaEstudiante / asignaturas;
+    }
+    printf("\n>> Cálculos de promedios finalizados.\n");
+    
 }
