@@ -28,38 +28,48 @@ int main()
         }
     }
 
-    // 3. Procesamiento de promedios por estudiante
+// 3. Procesamiento y Reporte por Estudiante (Promedios, Max y Min)
+    printf("\n==========================================================\n");
+    printf("            REPORTE DE RENDIMIENTO POR ESTUDIANTE         \n");
+    printf("==========================================================\n");
+    printf("Est. | Promedio | Nota Max | Nota Min \n");
+    printf("----------------------------------------------------------\n");
+
     for (int i = 0; i < estudiantes; i++) {
         sumaEstudiante = 0;
+        float maxEst = notas[i][0]; 
+        float minEst = notas[i][0];
+
         for (int j = 0; j < asignaturas; j++) {
             sumaEstudiante += notas[i][j];
+            if (notas[i][j] > maxEst) maxEst = notas[i][j];
+            if (notas[i][j] < minEst) minEst = notas[i][j];
         }
-        promedioEstudiante[i] = sumaEstudiante / asignaturas;
-    }
-    printf("\n>> Cálculos de promedios finalizados.\n");
-   // 4. Reporte Final de Calificaciones
-    printf("\n============================================\n");
-    printf("        REPORTE FINAL DE RENDIMIENTO        \n");
-    printf("============================================\n");
-    printf("Estudiante\tPromedio\tEstado\n");
-    printf("--------------------------------------------\n");
-    
-    for (int i = 0; i < estudiantes; i++) {
-        printf("   #%d\t\t %.2f\t\t%s\n", 
-               i + 1, 
-               promedioEstudiante[i], 
-               (promedioEstudiante[i] >= 7.0) ? "APROBADO" : "REPROBADO");
-        
-        // Conteo de estados
-        if (promedioEstudiante[i] >= 7.0) aprobados[0]++; // Usamos el primer índice para general
-        else reprobados[0]++;
+        printf(" #%d  |   %.2f   |   %.2f   |   %.2f\n", 
+               i + 1, sumaEstudiante / asignaturas, maxEst, minEst);
     }
 
-// 5. Estadísticas Generales
-    printf("--------------------------------------------\n");
-    printf("Total Aprobados: %d\n", aprobados[0]);
-    printf("Total Reprobados: %d\n", reprobados[0]);
-    printf("============================================\n");
+    // 4. Procesamiento y Reporte por Asignatura (Promedios, Max, Min, Aprobados)
+    printf("\n==========================================================\n");
+    printf("            ESTADISTICAS POR ASIGNATURA                   \n");
+    printf("==========================================================\n");
+    printf("Asig.| Promedio | Nota Max | Nota Min | Aprob. | Reprob.\n");
+    printf("----------------------------------------------------------\n");
 
-    return 0;
-}
+    for (int j = 0; j < asignaturas; j++) {
+        sumaAsignatura = 0;
+        float maxAsig = notas[0][j]; 
+        float minAsig = notas[0][j];
+        int countAprob = 0, countReprob = 0;
+
+        for (int i = 0; i < estudiantes; i++) {
+            sumaAsignatura += notas[i][j];
+            if (notas[i][j] > maxAsig) maxAsig = notas[i][j];
+            if (notas[i][j] < minAsig) minAsig = notas[i][j];
+
+            if (notas[i][j] >= 6.0) countAprob++; // Nota aprobatoria >= 6
+            else countReprob++;
+        }
+        printf(" #%d  |   %.2f   |   %.2f   |   %.2f   |   %d    |   %d\n", 
+                j + 1, sumaAsignatura / estudiantes, maxAsig, minAsig, countAprob, countReprob);
+    }
